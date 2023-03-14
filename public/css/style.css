@@ -55,17 +55,18 @@ button[type="submit"] {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin: 1rem 0;
+  margin: 5px;
   width: 100%;
 }
 
 .card p {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 0 1rem;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: 5px;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 
