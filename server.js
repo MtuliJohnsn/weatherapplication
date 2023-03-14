@@ -11,36 +11,41 @@ app.set('view engine', 'ejs')
 
 app.get('/', function (req, res) {
   res.render('index', { weather: null, error: null });
-})
+});
 
 app.post('/', function (req, res) {
   let city = req.body.city;
-  let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+  let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
 
   request(url, function (err, response, body) {
     if (err) {
       res.render('index', { weather: null, error: 'Error, please try again' });
     } else {
-      let weather = JSON.parse(body);
-      if (weather.main == undefined || weather.weather == undefined || weather.weather.length == 0) {
+      if (body === "") {
         res.render('index', { weather: null, error: 'Error, please try again' });
       } else {
-        let observationTime = new Date(weather.dt * 1000).toLocaleTimeString();
-        let weatherData = {
-          city: weather.name,
-          country: weather.sys.country,
-          temperature: weather.main.temp,
-          description: weather.weather[0].description,
-          icon: weather.weather[0].icon,
-          wind: weather.wind.speed
-        };
-        let weatherText = `${weatherData.city}, ${weatherData.country} at ${observationTime}. Temperature ${weatherData.temperature} degrees Fahrenheit. Condition ${weatherData.description}. Wind speed ${weatherData.wind} mph.`;
-
-        res.render('index', { weather: weatherData, weatherText: weatherText, error: null });
+        let weather = JSON.parse(body);
+        if (weather.main == undefined || weather.weather == undefined || weather.weather.length == 0) {
+          res.render('index', { weather: null, error: 'Error, please try again' });
+        } else {
+          let weatherData = {
+            city: weather.name,
+            country: weather.sys.country,
+            temperature: weather.main.temp,
+            description: weather.weather[0].description,
+            icon: weather.weather[0].icon,
+            wind: weather.wind.speed,
+            humidity: weather.main.humidity,
+            feels_like: weather.main.feels_like,
+            currentDate: new Date().toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })
+          };
+          
+          res.render('index', { weather: weatherData, error: null });
+        }
       }
     }
   });
-})
+});
 
 const port = process.env.PORT || 8002;
 

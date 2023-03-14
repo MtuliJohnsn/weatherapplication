@@ -6,32 +6,33 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-      <form action="/" method="post">
-       
-          <h1>Weather Information</h1>
-          <input name="city" type="text" id="city" placeholder="Enter a City" required>
-          <button type="submit">Get Weather</button>
-        
-      </form>
+    <form action="/" method="post">
+      <h1>Weather Information</h1>
+      <input name="city" type="text" id="city" placeholder="Enter a City" required>
+      <button type="submit">Get Weather</button>
+    </form>
 
-      <% if (weather) { %>
-        <div class="card">
-          <div class="icon">
-            <img src="http://openweathermap.org/img/w/<%= weather.icon %>.png">
-          </div>
-          <div class="content">
-            <h2><%= weather.name %> <%= weather.country || '' %></h2>
-            <p><%= weather.description %></p>
-            <p>Temperature: <%= weather.temp %> &deg;F</p>
-            <p>Feels like: <%= weather.feels_like %> &deg;F</p>
-            <p>Humidity: <%= weather.humidity %>%</p>
-            <p>Wind speed: <%= weather.wind_speed %> mph</p>
-          </div>
+    <% if (weather) { %>
+      <div class="card">
+        <div class="icon">
+          <img src="http://openweathermap.org/img/w/<%= weather.icon %>.png">
         </div>
-      <% } %>
-      <% if (error) { %>
-        <p><%= error %></p>
-      <% } %>
-    
+        <div class="content">
+          <h2><%= weather.city %> , <%= weather.country || '' %></h2>
+          <p><%= new Date().toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
+
+
+          
+          <p><%= weather.description %></p>
+          <p>Temperature: <%= weather.temperature %> &deg;C</p>
+          <p>Feels like: <%= weather.feels_like %> &deg;C</p>
+          <p>Humidity: <%= weather.humidity %>%</p>
+          <p>Wind speed: <%= weather.wind %> mph</p>
+        </div>
+      </div>
+    <% } %>
+    <% if (error) { %>
+      <p><%= error %></p>
+    <% } %>
   </body>
 </html>
