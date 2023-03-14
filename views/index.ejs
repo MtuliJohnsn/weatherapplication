@@ -15,7 +15,19 @@
       </form>
 
       <% if (weather) { %>
-        <p><%= weather %></p>
+        <div class="card">
+          <div class="icon">
+            <img src="http://openweathermap.org/img/w/<%= weather.icon %>.png">
+          </div>
+          <div class="content">
+            <h2><%= weather.name %> <%= weather.country || '' %></h2>
+            <p><%= weather.description %></p>
+            <p>Temperature: <%= weather.temp %> &deg;F</p>
+            <p>Feels like: <%= weather.feels_like %> &deg;F</p>
+            <p>Humidity: <%= weather.humidity %>%</p>
+            <p>Wind speed: <%= weather.wind_speed %> mph</p>
+          </div>
+        </div>
       <% } %>
       <% if (error) { %>
         <p><%= error %></p>
