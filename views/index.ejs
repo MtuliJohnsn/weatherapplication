@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <div class="container">
       <form action="/" method="post">
        
           <h1>Weather Information</h1>
@@ -14,12 +13,13 @@
           <button type="submit">Get Weather</button>
         
       </form>
+
       <% if (weather) { %>
         <p><%= weather %></p>
       <% } %>
       <% if (error) { %>
         <p><%= error %></p>
       <% } %>
-    </div>
+    
   </body>
 </html>
