@@ -1,36 +1,22 @@
-
-      .parameters {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .parameters p {
-        margin-right: 20px;
-      }
-
 body {
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   border-radius: 50;
   text-align: center;
   text-decoration: solid;
-
-  
 }
 
-html{
-  background-image:  url("https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+html {
+  background-image: url("https://images.pexels.com/photos/2775196/pexels-photo-2775196.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-size: cover;
-  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
-
 }
 
 input[type="text"] {
   padding: 10px;
   margin-bottom: 10px;
   border-radius: 50px;
-  border:none;
+  border: none;
   font-size: 16px;
+  text-align: center;
 }
 
 button[type="submit"] {
@@ -43,30 +29,48 @@ button[type="submit"] {
   cursor: pointer;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 28px;
-  color: black;
-}
-p{
-  font-size: medium;
-  font-weight: bold;
-}
-.weather-info {
+
+
+.card {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.weather-info-item {
-  flex-basis: 25%;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  margin-bottom: 10px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color:rgb(red, green, blue,0.2)
+  
 }
 
-.weather-info-item p:first-child {
+.card .icon {
+  margin: 1rem 0;
+  margin-bottom: 0px;
+}
+
+.card .content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.card p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
   font-weight: bold;
-  margin-bottom: 5px;
+}
+
+
+.card p1 {
+  margin-bottom: 0px;
+  text-transform: capitalize;
+  font-weight: bold;
 }
