@@ -14,22 +14,32 @@
 
     <% if (weather) { %>
       <div class="card">
+        <p><%= weather.description %></p>
         <div class="icon">
           <img src="http://openweathermap.org/img/w/<%= weather.icon %>.png">
         </div>
         <div class="content">
           <h2><%= weather.city %> , <%= weather.country || '' %></h2>
           <p><%= new Date().toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }) %></p>
-
-
+          <div class="weather-info">
+            <div class="weather-info-item">
+              <p>Temperature:</p>
+              <p><%= weather.temperature %> &deg;C</p>
+            </div>
+            <div class="weather-info-item">
+              <p>Feels like:</p>
+              <p><%= weather.feels_like %> &deg;C</p>
+            </div>
+            <div class="weather-info-item">
+              <p>Humidity:</p>
+              <p><%= weather.humidity %>%</p>
+            </div>
+            <div class="weather-info-item">
+              <p>Wind speed:</p>
+              <p><%= weather.wind %> mph</p>
+            </div>
+          </div>
           
-          <p><%= weather.description %></p>
-          <p>Temperature: <%= weather.temperature %> &deg;C</p>
-          <p>Feels like: <%= weather.feels_like %> &deg;C</p>
-          <p>Humidity: <%= weather.humidity %>%</p>
-          <p>Wind speed: <%= weather.wind %> mph</p>
-        </div>
-      </div>
     <% } %>
     <% if (error) { %>
       <p><%= error %></p>
